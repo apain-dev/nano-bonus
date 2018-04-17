@@ -3,3 +3,5 @@
              (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
   </file-drop>
 </div>
+<pre>{{ _isFile }}</pre>
+<app-file-info *ngIf="_isFile" style="margin: 2%"></app-file-info>
