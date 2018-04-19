@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div style="margin: 2%"></div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6" style="margin: auto; float: none">
+      <div class="card item"></div>
+      <div class="card-body">
+        <app-breadcrumb [step]="_step"></app-breadcrumb>
+        <!-- <app-drop></app-drop> -->
+        <div class="form-group" *ngIf="_step === 0">
+          <form>
+          <select required *ngIf="fileService.files" [(ngModel)]="selectedOption" class="form-control" name="first">
+
+            <option *ngFor="let file of fileService.files._data">{{ file }}</option>
+
+          </select>
+          </form>
+        </div>
+        <div *ngIf="_step === 1">
+          <app-file-info></app-file-info>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-success" [disabled]="false" (click)="nextStep(selectedOption)">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+<ng2-toasty [position]="'bottom-right'"></ng2-toasty>
+
