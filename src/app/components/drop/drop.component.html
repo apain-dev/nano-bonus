@@ -1,7 +1,9 @@
 <div style="width: 50%; float: none; margin: auto">
-  <file-drop headertext="Drop files here (*.nts)" (onFileDrop)="dropped($event)"
-             (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+ <file-drop headertext="Drop files here (*.nts)" (onFileDrop)="dropped($event)">
   </file-drop>
+  <codemirror [(ngModel)]="code">
+  </codemirror>
+
 </div>
-<pre>{{ _isFile }}</pre>
-<app-file-info *ngIf="_isFile" style="margin: 2%"></app-file-info>
+<pre *ngIf="_step.isFile">{{ fileService.file | json}}</pre>
+<app-file-info  style="margin: 2%"></app-file-info>

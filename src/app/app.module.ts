@@ -8,20 +8,31 @@ import { DropComponent } from './components/drop/drop.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { FileInfoComponent } from './components/file-info/file-info.component';
 import { FileService } from './services/file.service'
+import {RequestService} from "./services/request.service";
+import {Http} from "@angular/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { CodemirrorModule } from 'ng2-codemirror'
+import {FormsModule} from "@angular/forms";
+import {NotificationService} from "./services/notification.service";
+import {ToastyModule} from "ng2-toasty";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    DropComponent,
     BreadcrumbComponent,
     FileInfoComponent
   ],
   imports: [
     BrowserModule,
-    FileDropModule
+    FileDropModule,
+    HttpClientModule,
+    CodemirrorModule,
+    FormsModule,
+    ToastyModule.forRoot()
+
   ],
-  providers: [FileService],
+  providers: [RequestService, FileService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

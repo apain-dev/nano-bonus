@@ -7,10 +7,16 @@ import {FileService} from "../../services/file.service";
   styleUrls: ['./file-info.component.scss']
 })
 export class FileInfoComponent implements OnInit {
-  @Input() _file: File;
-  constructor() { }
+
+  constructor(public fileService: FileService) {
+
+  }
 
   ngOnInit() {
+    this.fileService._inputs = [];
+    for (var i in this.fileService._readFile._inputs) {
+      this.fileService._inputs.push({input: this.fileService._readFile._inputs[i],value: 0});
+    }
   }
 
 }
